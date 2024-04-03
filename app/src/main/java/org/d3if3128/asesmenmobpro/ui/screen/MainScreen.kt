@@ -12,6 +12,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
+import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -52,8 +53,9 @@ fun MainScreen() {
 @Composable
 fun ScreenContent(modifier: Modifier) {
     var nama by remember { mutableStateOf("") }
+    var namaError by remember { mutableStateOf(false) }
     var berat by remember { mutableStateOf("") }
-//    var tinggi by remember { mutableStateOf("") }
+    var beratError by remember { mutableStateOf(false) }
 
     var expanded by remember { mutableStateOf(false) }
     val list = listOf(
@@ -61,6 +63,8 @@ fun ScreenContent(modifier: Modifier) {
         "7 bulan", "8 bulan", "9 bulan", "10 bulan", "11 bulan", "12 bulan"
     )
     var pilihUsia by remember { mutableStateOf("") }
+    var pilihUsiaError by remember { mutableStateOf(false) }
+
     var textFiledSize by remember { mutableStateOf(Size.Zero) }
     val icon = if (expanded) {
         Icons.Filled.KeyboardArrowUp
@@ -92,6 +96,8 @@ fun ScreenContent(modifier: Modifier) {
             value = nama,
             onValueChange = { nama = it },
             label = { Text(text = stringResource(R.string.nama_bayi)) },
+            isError = namaError,
+            supportingText = { ErrorHint(namaError)},
             singleLine = false,
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text,
@@ -129,9 +135,12 @@ fun ScreenContent(modifier: Modifier) {
                     textFiledSize = coordinates.size.toSize()
                 },
             label = { Text(text = stringResource(R.string.usia_bayi)) },
+            isError = pilihUsiaError,
             trailingIcon = {
-                Icon(icon, "", Modifier.clickable { expanded = !expanded })
-            }
+                Icon(icon, "", Modifier.clickable { expanded = !expanded }
+                )
+            },
+                    supportingText = { ErrorHint(pilihUsiaError)},
         )
         DropdownMenu(
             expanded = expanded,
@@ -152,7 +161,9 @@ fun ScreenContent(modifier: Modifier) {
             value = berat,
             onValueChange = { berat = it },
             label = { Text(text = stringResource(R.string.berat_badan)) },
-            trailingIcon = { Text(text = "kg") },
+            isError = beratError,
+            trailingIcon = { IconPicker(beratError, "kg" ) },
+            supportingText = { ErrorHint(beratError)},
             singleLine = true,
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Number,
@@ -162,6 +173,10 @@ fun ScreenContent(modifier: Modifier) {
         )
         Button(
             onClick = {
+                namaError = (nama == "" ||  nama == "0")
+                beratError = (berat == "" || berat == "0" || berat.toFloatOrNull() == null || berat.toFloat() <= 0)
+                pilihUsiaError =(pilihUsia == "" || pilihUsia == "0")
+                if (namaError || beratError || pilihUsiaError) return@Button
                 kategoriGizi = getKategoriGizi(
                     berat.toFloat(),
                     jeniskelamin == radioOptions[0],
@@ -204,7 +219,21 @@ fun GenderOption(label: String, isSelected: Boolean, modifier: Modifier) {
     }
 }
 
+@Composable
+fun  IconPicker(isError:Boolean, unit: String){
+    if (isError){
+        Icon(imageVector = Icons.Filled.Warning, contentDescription = null)
+    } else{
+        Text(text = unit)
+    }
+}
 
+@Composable
+fun ErrorHint(isError: Boolean){
+    if(isError){
+        Text(text = stringResource(id = R.string.input_invalid))
+    }
+}
 
 private fun getKategoriGizi(berat: Float, isMale: Boolean, pilihUsia: String): Int {
     return if (isMale) {
