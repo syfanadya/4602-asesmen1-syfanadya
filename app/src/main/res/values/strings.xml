@@ -1,11 +1,15 @@
 <resources>
     <string name="app_name">NutriBaby</string>
-    <string name="nutribaby_intro">NutriBaby merupakan aplikasi untuk menentukan status gizi pada bayi usia 0 sampai 24 bulan.Cobalah sekarang!</string>
-    <string name="nama_bayi">Nama bayi</string>
-    <string name="usia_bayi">Usia bayi</string>
+    <string name="nutribaby_intro">NutriBaby merupakan aplikasi untuk menentukan status gizi pada bayi usia 0 sampai 12 bulan.Cobalah sekarang!</string>
+    <string name="nama_bayi">Nama Bayi</string>
+    <string name="usia_bayi">Usia Bayi</string>
     <string name="berat_badan">Berat Badan</string>
     <string name="tinggi_badan">Tinggi Badan</string>
-    <string name="laki_laki">Laki - laki</string>
+    <string name="laki_laki">Laki - Laki</string>
     <string name="perempuan">Perempuan</string>
     <string name="tentukan">Tentukan</string>
+    <string name="gizi_kurang">Gizi Kurang</string>
+    <string name="gizi_baik">Gizi Baik</string>
+    <string name="gizi_lebih">Gizi Lebih</string>
+    <string name="gizi_default">Usia melampaui batas</string>
 </resources>
