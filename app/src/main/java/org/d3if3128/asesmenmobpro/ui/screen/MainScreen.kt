@@ -178,6 +178,9 @@ fun ScreenContent(modifier: Modifier) {
                 modifier = Modifier.padding(vertical = 8.dp),
                 thickness = 1.dp
             )
+            Text(text = stringResource(id = R.string.kategori_gizi),
+                style = MaterialTheme.typography.titleLarge
+            )
             Text(
                 text = stringResource(id = kategoriGizi).uppercase(),
                 style = MaterialTheme.typography.headlineLarge

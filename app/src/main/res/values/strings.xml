@@ -12,4 +12,5 @@
     <string name="gizi_baik">Gizi Baik</string>
     <string name="gizi_lebih">Gizi Lebih</string>
     <string name="gizi_default">Usia melampaui batas</string>
+    <string name="kategori_gizi">Kategori Gizi Bayi</string>
 </resources>
