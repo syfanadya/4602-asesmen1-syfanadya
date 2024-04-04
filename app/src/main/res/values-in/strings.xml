@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+<string name="app_name">NutriBaby</string>
+<string name="nutribaby_intro">NutriBaby merupakan aplikasi untuk menentukan status gizi pada bayi usia 0 sampai 12 bulan.Cobalah sekarang!</string>
+<string name="nama_bayi">Nama Bayi</string>
+<string name="usia_bayi">Usia Bayi</string>
+<string name="berat_badan">Berat Badan</string>
+<string name="laki_laki">Laki - Laki</string>
+<string name="perempuan">Perempuan</string>
+<string name="tentukan">Tentukan</string>
+<string name="gizi_kurang">Gizi Kurang</string>
+<string name="gizi_baik">Gizi Baik</string>
+<string name="gizi_lebih">Gizi Lebih</string>
+<string name="gizi_default">Usia melampaui batas</string>
+<string name="kategori_gizi">Kategori Gizi Bayi</string>
+<string name="input_invalid">Tidak Boleh Kosong.</string>
+<string name="tentang_aplikasi">Tentang Aplikasi</string>
+<string name="copyright">NutriBaby merupakan sebuah aplikasi Android untuk menentukan
+        status gizi pada bayi usia 0 sampai 12 bulan yang berkembangannya perlu untuk
+        diperhatikan sehingga dapat membantu orang tua atau baby sister untuk mengetahui
+        status gizi bayi.Yang mana terdapat 3 golongan gizi berdasarkan berat badan dan usia
+        bayi yaitu gizi kurang, gizi baik dan gizi lebih\n\nAplikasi ini dibuat untuk asesmen
+        1 kelas Mobpro 1.\n\nCopyright © 2024 Syfanadya Wening Adi\nAll rights reserved</string>
+<string name="kembali">Kembali</string>
+<string name="bagikan">Bagikan</string>
+<string name="bagikan_template">Nama Bayi: %1$s\nJenis Kelamin: %2$s\nUsia Bayi: %3$s
+        \nBerat Badan: %4$s kg\n\nKATEGORI: %5$s</string>
+<string name="gambar">Gambar Logo Aplikasi NutriBaby</string>
+
+</resources>

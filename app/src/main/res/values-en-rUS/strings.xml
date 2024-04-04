@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="app_name">NutriBaby</string>
+    <string name="nutribaby_intro">NutriBaby is an application to determine the nutritional status
+        of babies aged 0 to 12 months.Try it now!</string>
+    <string name="nama_bayi">Baby Names</string>
+    <string name="usia_bayi">Baby Ages</string>
+    <string name="berat_badan">Body Weight</string>
+    <string name="laki_laki">Male</string>
+    <string name="perempuan">Female</string>
+    <string name="tentukan">Define</string>
+    <string name="gizi_kurang">Malnutrition</string>
+    <string name="gizi_baik">Good Nutrition</string>
+    <string name="gizi_lebih">Over Nutrition</string>
+    <string name="gizi_default">Age over limit</string>
+    <string name="kategori_gizi">Baby Nutrition Category</string>
+    <string name="input_invalid">Cannot be empty.</string>
+    <string name="tentang_aplikasi">About Application</string>
+    <string name="copyright">NutriBaby is an Android application to determine
+        nutritional status in infants aged 0 to 12 months whose development needs to be paid
+        attention to so that it can help parents or baby sisters to know the nutritional status of
+        infants.attention so that it can help parents or baby sisters to find out
+        Which there are 3 groups of nutrition based on body weight and age of the baby, namely
+        malnutrition, good nutrition and more nutrition.
+        \n\nThis application is made for assessment 1 of Mobpro 1 class.
+        \n\nCopyright © 2024 Syfanadya Wening Adi\nAll rights reserved</string>
+    <string name="kembali">Back</string>
+    <string name="bagikan">Share</string>
+    <string name="bagikan_template">Baby Names: %1$s\nGender: %2$s\nBaby Ages: %3$s
+            \nBody Weight: %4$s kg\n\nCATEGORY: %5$s</string>
+    <string name="gambar">NutriBaby App Logo Image</string>
+
+</resources>
