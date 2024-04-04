@@ -25,4 +25,6 @@
     <string name="bagikan">Bagikan</string>
     <string name="bagikan_template">Nama Bayi: %1$s\nJenis Kelamin: %2$s\nUsia Bayi: %3$s
         \nBerat Badan: %4$s kg\n\nKATEGORI: %5$s</string>
+    <string name="gambar">Gambar Logo Aplikasi NutriBaby</string>
+
 </resources>

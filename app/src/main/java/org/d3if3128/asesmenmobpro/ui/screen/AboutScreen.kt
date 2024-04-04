@@ -1,7 +1,13 @@
 package org.d3if3128.asesmenmobpro.ui.screen
 
 import android.content.res.Configuration
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -13,7 +19,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -51,12 +60,29 @@ fun AboutScreen(navController: NavHostController) {
             )
         }
     ) { padding ->
-        Text(
-            text = stringResource(R.string.copyright),
+        Column(
             modifier = Modifier
-                .padding(padding)
-                .padding(16.dp)
-        )
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
+                .padding(16.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Image(
+                modifier = Modifier
+                    .padding(padding)
+                    .padding(16.dp),
+                painter = painterResource(id = data[0].imageResId),
+                contentDescription = stringResource(id = R.string.gambar),
+                contentScale = ContentScale.Crop
+            )
+            Text(
+                text = stringResource(R.string.copyright),
+                modifier = Modifier
+                    .padding(16.dp)
+            )
+        }
+
     }
 }
 
@@ -65,6 +91,7 @@ private fun getData(): List<Logo>{
         Logo("Logo Aplikasi NutriBaby", R.drawable.logo)
     )
 }
+
 
 @Preview(showBackground = true)
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
