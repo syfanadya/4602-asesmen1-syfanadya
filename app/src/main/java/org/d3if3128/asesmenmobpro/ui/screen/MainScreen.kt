@@ -105,10 +105,10 @@ fun ScreenContent(modifier: Modifier) {
 
     var expanded by remember { mutableStateOf(false) }
     val list = listOf(
-        "0 bulan", "1 bulan", "2 bulan", "3 bulan", "4 bulan", "5 bulan", "6 bulan",
-        "7 bulan", "8 bulan", "9 bulan", "10 bulan", "11 bulan", "12 bulan"
+        "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"
     )
-    var pilihUsia by rememberSaveable { mutableStateOf("") }
+
+        var pilihUsia by rememberSaveable { mutableStateOf("") }
     var pilihUsiaError by rememberSaveable { mutableStateOf(false) }
 
     var textFiledSize by remember { mutableStateOf(Size.Zero) }
@@ -185,8 +185,10 @@ fun ScreenContent(modifier: Modifier) {
             label = { Text(text = stringResource(R.string.usia_bayi)) },
             isError = pilihUsiaError,
             trailingIcon = {
-                Icon(icon, "", Modifier.clickable { expanded = !expanded }
-                )
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(text = stringResource(R.string.bulan))
+                    Icon(icon, "", Modifier.clickable { expanded = !expanded })
+                }
             },
                     supportingText = { ErrorHint(pilihUsiaError)},
         )
@@ -223,7 +225,7 @@ fun ScreenContent(modifier: Modifier) {
             onClick = {
                 namaError = (nama == "" ||  nama == "0")
                 beratError = (berat == "" || berat == "0" || berat.toFloatOrNull() == null || berat.toFloat() <= 0)
-                pilihUsiaError =(pilihUsia == "" || pilihUsia == "0")
+                pilihUsiaError =(pilihUsia == "")
                 if (namaError || beratError || pilihUsiaError) return@Button
                 kategoriGizi = getKategoriGizi(
                     berat.toFloat(),
@@ -299,7 +301,7 @@ fun ErrorHint(isError: Boolean){
 private fun getKategoriGizi(berat: Float, isMale: Boolean, pilihUsia: String): Int {
     return if (isMale) {
         when (pilihUsia) {
-            "0 bulan" -> {
+            "0" -> {
                 if (berat < 2.5) {
                     R.string.gizi_kurang
                 } else if (berat > 2.4 && berat < 4.0) {
@@ -308,7 +310,7 @@ private fun getKategoriGizi(berat: Float, isMale: Boolean, pilihUsia: String): I
                     R.string.gizi_lebih
                 }
             }
-            "1 bulan" -> {
+            "1" -> {
                 if (berat < 3.4) {
                     R.string.gizi_kurang
                 } else if (berat > 3.3 && berat < 5.1) {
@@ -317,7 +319,7 @@ private fun getKategoriGizi(berat: Float, isMale: Boolean, pilihUsia: String): I
                     R.string.gizi_lebih
                 }
             }
-            "2 bulan" -> {
+            "2" -> {
                 if (berat < 4.3) {
                     R.string.gizi_kurang
                 } else if (berat > 4.2 && berat < 6.4) {
@@ -326,7 +328,7 @@ private fun getKategoriGizi(berat: Float, isMale: Boolean, pilihUsia: String): I
                     R.string.gizi_lebih
                 }
             }
-            "3 bulan" -> {
+            "3" -> {
                 if (berat < 5.0) {
                     R.string.gizi_kurang
                 } else if (berat > 4.9 && berat < 7.3) {
@@ -335,7 +337,7 @@ private fun getKategoriGizi(berat: Float, isMale: Boolean, pilihUsia: String): I
                     R.string.gizi_lebih
                 }
             }
-            "4 bulan" -> {
+            "4" -> {
                 if (berat <= 5.5) {
                     R.string.gizi_kurang
                 } else if (berat > 5.5 && berat < 7.9) {
@@ -344,7 +346,7 @@ private fun getKategoriGizi(berat: Float, isMale: Boolean, pilihUsia: String): I
                     R.string.gizi_lebih
                 }
             }
-            "5 bulan" -> {
+            "5" -> {
                 if (berat < 6.0) {
                     R.string.gizi_kurang
                 } else if (berat > 5.9 && berat < 8.5) {
@@ -353,7 +355,7 @@ private fun getKategoriGizi(berat: Float, isMale: Boolean, pilihUsia: String): I
                     R.string.gizi_lebih
                 }
             }
-            "6 bulan" -> {
+            "6" -> {
                 if (berat < 6.4) {
                     R.string.gizi_kurang
                 } else if (berat > 6.3 && berat < 8.9) {
@@ -362,7 +364,7 @@ private fun getKategoriGizi(berat: Float, isMale: Boolean, pilihUsia: String): I
                     R.string.gizi_lebih
                 }
             }
-            "7 bulan" -> {
+            "7" -> {
                 if (berat <= 6.6) {
                     R.string.gizi_kurang
                 } else if (berat > 6.6 && berat < 9.3) {
@@ -371,7 +373,7 @@ private fun getKategoriGizi(berat: Float, isMale: Boolean, pilihUsia: String): I
                     R.string.gizi_lebih
                 }
             }
-            "8 bulan" -> {
+            "8" -> {
                 if (berat < 6.9) {
                     R.string.gizi_kurang
                 } else if (berat > 6.8 && berat < 9.7) {
@@ -380,7 +382,7 @@ private fun getKategoriGizi(berat: Float, isMale: Boolean, pilihUsia: String): I
                     R.string.gizi_lebih
                 }
             }
-            "9 bulan" -> {
+            "9" -> {
                 if (berat <= 7.0) {
                     R.string.gizi_kurang
                 } else if (berat > 7.0 && berat < 10) {
@@ -389,7 +391,7 @@ private fun getKategoriGizi(berat: Float, isMale: Boolean, pilihUsia: String): I
                     R.string.gizi_lebih
                 }
             }
-            "10 bulan" -> {
+            "10" -> {
                 if (berat < 7.4) {
                     R.string.gizi_kurang
                 } else if (berat > 7.3 &&  berat < 10.3) {
@@ -398,7 +400,7 @@ private fun getKategoriGizi(berat: Float, isMale: Boolean, pilihUsia: String): I
                     R.string.gizi_lebih
                 }
             }
-            "11 bulan" -> {
+            "11" -> {
                 if (berat <= 7.5) {
                     R.string.gizi_kurang
                 } else if (berat > 7.5 && berat < 10.6) {
@@ -407,7 +409,7 @@ private fun getKategoriGizi(berat: Float, isMale: Boolean, pilihUsia: String): I
                     R.string.gizi_lebih
                 }
             }
-            "12 bulan" -> {
+            "12" -> {
                 if (berat <= 7.6) {
                     R.string.gizi_kurang
                 } else if (berat > 7.6 && berat < 10.9) {
@@ -420,7 +422,7 @@ private fun getKategoriGizi(berat: Float, isMale: Boolean, pilihUsia: String): I
         }
     } else {
         when (pilihUsia) {
-            "0 bulan" -> {
+            "0" -> {
                 if (berat < 2.4) {
                     R.string.gizi_kurang
                 } else if (berat >= 2.4 && berat < 3.8) {
@@ -429,7 +431,7 @@ private fun getKategoriGizi(berat: Float, isMale: Boolean, pilihUsia: String): I
                     R.string.gizi_lebih
                 }
             }
-            "1 bulan" -> {
+            "1" -> {
                 if (berat <= 3.1) {
                     R.string.gizi_kurang
                 } else if (berat > 3.1 && berat < 4.9) {
@@ -438,7 +440,7 @@ private fun getKategoriGizi(berat: Float, isMale: Boolean, pilihUsia: String): I
                     R.string.gizi_lebih
                 }
             }
-            "2 bulan" -> {
+            "2" -> {
                 if (berat < 3.9) {
                     R.string.gizi_kurang
                 } else if (berat > 3.8 && berat < 5.9) {
@@ -447,7 +449,7 @@ private fun getKategoriGizi(berat: Float, isMale: Boolean, pilihUsia: String): I
                     R.string.gizi_lebih
                 }
             }
-            "3 bulan" -> {
+            "3" -> {
                 if (berat < 4.5) {
                     R.string.gizi_kurang
                 } else if (berat > 4.4 && berat < 6.7) {
@@ -456,7 +458,7 @@ private fun getKategoriGizi(berat: Float, isMale: Boolean, pilihUsia: String): I
                     R.string.gizi_lebih
                 }
             }
-            "4 bulan" -> {
+            "4" -> {
                 if (berat < 5.0) {
                     R.string.gizi_kurang
                 } else if (berat > 4.9 && berat < 7.4) {
@@ -465,7 +467,7 @@ private fun getKategoriGizi(berat: Float, isMale: Boolean, pilihUsia: String): I
                     R.string.gizi_lebih
                 }
             }
-            "5 bulan" -> {
+            "5" -> {
                 if (berat < 5.4) {
                     R.string.gizi_kurang
                 } else if (berat > 5.3 && berat < 7.9) {
@@ -474,7 +476,7 @@ private fun getKategoriGizi(berat: Float, isMale: Boolean, pilihUsia: String): I
                     R.string.gizi_lebih
                 }
             }
-            "6 bulan" -> {
+            "6" -> {
                 if (berat <= 5.6) {
                     R.string.gizi_kurang
                 } else if (berat > 5.6 && berat < 8.3) {
@@ -483,7 +485,7 @@ private fun getKategoriGizi(berat: Float, isMale: Boolean, pilihUsia: String): I
                     R.string.gizi_lebih
                 }
             }
-            "7 bulan" -> {
+            "7" -> {
                 if (berat < 6.0) {
                     R.string.gizi_kurang
                 } else if (berat > 5.9 && berat < 8.7) {
@@ -492,7 +494,7 @@ private fun getKategoriGizi(berat: Float, isMale: Boolean, pilihUsia: String): I
                     R.string.gizi_lebih
                 }
             }
-            "8 bulan" -> {
+            "8" -> {
                 if (berat < 6.3) {
                     R.string.gizi_kurang
                 } else if (berat > 6.2 && berat < 9.1) {
@@ -501,7 +503,7 @@ private fun getKategoriGizi(berat: Float, isMale: Boolean, pilihUsia: String): I
                     R.string.gizi_lebih
                 }
             }
-            "9 bulan" -> {
+            "9" -> {
                 if (berat < 6.5) {
                     R.string.gizi_kurang
                 } else if (berat > 6.4 && berat < 9.4) {
@@ -510,7 +512,7 @@ private fun getKategoriGizi(berat: Float, isMale: Boolean, pilihUsia: String): I
                     R.string.gizi_lebih
                 }
             }
-            "10 bulan" -> {
+            "10" -> {
                 if (berat <= 6.6) {
                     R.string.gizi_kurang
                 } else if (berat > 6.6 && berat < 9.7) {
@@ -519,7 +521,7 @@ private fun getKategoriGizi(berat: Float, isMale: Boolean, pilihUsia: String): I
                     R.string.gizi_lebih
                 }
             }
-            "11 bulan" -> {
+            "11" -> {
                 if (berat < 6.9) {
                     R.string.gizi_kurang
                 } else if (berat > 6.8 && berat < 10) {
@@ -528,7 +530,7 @@ private fun getKategoriGizi(berat: Float, isMale: Boolean, pilihUsia: String): I
                     R.string.gizi_lebih
                 }
             }
-            "12 bulan" -> {
+            "12" -> {
                 if (berat < 7.0) {
                     R.string.gizi_kurang
                 } else if (berat > 6.9 && berat < 10.2) {

@@ -26,7 +26,8 @@
         \n\nCopyright © 2024 Syfanadya Wening Adi\nAll rights reserved</string>
     <string name="kembali">Back</string>
     <string name="bagikan">Share</string>
-    <string name="bagikan_template">Baby Names: %1$s\nGender: %2$s\nBaby Ages: %3$s
+    <string name="bagikan_template">Baby Names: %1$s\nGender: %2$s\nBaby Ages: %3$s month
             \nBody Weight: %4$s kg\n\nCATEGORY: %5$s</string>
     <string name="gambar">NutriBaby App Logo Image</string>
+    <string name="bulan">Month</string>
 </resources>
