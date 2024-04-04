@@ -40,6 +40,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -92,18 +93,18 @@ fun MainScreen(navController: NavHostController) {
 
 @Composable
 fun ScreenContent(modifier: Modifier) {
-    var nama by remember { mutableStateOf("") }
-    var namaError by remember { mutableStateOf(false) }
-    var berat by remember { mutableStateOf("") }
-    var beratError by remember { mutableStateOf(false) }
+    var nama by rememberSaveable { mutableStateOf("") }
+    var namaError by rememberSaveable { mutableStateOf(false) }
+    var berat by rememberSaveable { mutableStateOf("") }
+    var beratError by rememberSaveable { mutableStateOf(false) }
 
     var expanded by remember { mutableStateOf(false) }
     val list = listOf(
         "0 bulan", "1 bulan", "2 bulan", "3 bulan", "4 bulan", "5 bulan", "6 bulan",
         "7 bulan", "8 bulan", "9 bulan", "10 bulan", "11 bulan", "12 bulan"
     )
-    var pilihUsia by remember { mutableStateOf("") }
-    var pilihUsiaError by remember { mutableStateOf(false) }
+    var pilihUsia by rememberSaveable { mutableStateOf("") }
+    var pilihUsiaError by rememberSaveable { mutableStateOf(false) }
 
     var textFiledSize by remember { mutableStateOf(Size.Zero) }
     val icon = if (expanded) {
@@ -116,8 +117,8 @@ fun ScreenContent(modifier: Modifier) {
         stringResource(id = R.string.laki_laki),
         stringResource(id = R.string.perempuan)
     )
-    var jeniskelamin by remember { mutableStateOf(radioOptions[0]) }
-    var kategoriGizi by remember { mutableIntStateOf(0) }
+    var jeniskelamin by rememberSaveable { mutableStateOf(radioOptions[0]) }
+    var kategoriGizi by rememberSaveable { mutableIntStateOf(0) }
 
     Column(
         modifier = modifier
