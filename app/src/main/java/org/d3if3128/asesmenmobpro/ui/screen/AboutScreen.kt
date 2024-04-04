@@ -20,11 +20,15 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import org.d3if3128.asesmenmobpro.R
+import org.d3if3128.asesmenmobpro.model.Logo
 import org.d3if3128.asesmenmobpro.ui.theme.AsesmenMobproTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AboutScreen(navController: NavHostController) {
+
+    val data = getData()
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -56,6 +60,11 @@ fun AboutScreen(navController: NavHostController) {
     }
 }
 
+private fun getData(): List<Logo>{
+    return listOf(
+        Logo("Logo Aplikasi NutriBaby", R.drawable.logo)
+    )
+}
 
 @Preview(showBackground = true)
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
