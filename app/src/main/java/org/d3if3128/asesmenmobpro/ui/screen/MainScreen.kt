@@ -1,5 +1,8 @@
 package org.d3if3128.asesmenmobpro.ui.screen
 
+import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import android.content.res.Configuration
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -47,6 +50,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.input.ImeAction
@@ -91,6 +95,7 @@ fun MainScreen(navController: NavHostController) {
     }
 }
 
+@SuppressLint("StringFormatMatches")
 @Composable
 fun ScreenContent(modifier: Modifier) {
     var nama by rememberSaveable { mutableStateOf("") }
@@ -119,6 +124,8 @@ fun ScreenContent(modifier: Modifier) {
     )
     var jeniskelamin by rememberSaveable { mutableStateOf(radioOptions[0]) }
     var kategoriGizi by rememberSaveable { mutableIntStateOf(0) }
+
+    val context = LocalContext.current
 
     Column(
         modifier = modifier
@@ -241,6 +248,19 @@ fun ScreenContent(modifier: Modifier) {
                 text = stringResource(id = kategoriGizi).uppercase(),
                 style = MaterialTheme.typography.headlineLarge
             )
+            Button(onClick = {
+                shareData(
+                    context = context,
+                    message = context.getString(R.string.bagikan_template,
+                        nama, jeniskelamin, pilihUsia, berat,
+                        context.getString(kategoriGizi).uppercase())
+                )
+            },
+                modifier = Modifier.padding(top = 8.dp),
+                contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp)
+            ) {
+                Text(text = stringResource(id = R.string.bagikan))
+            }
         }
     }
 }
@@ -519,6 +539,16 @@ private fun getKategoriGizi(berat: Float, isMale: Boolean, pilihUsia: String): I
             }
             else -> R.string.gizi_default
         }
+    }
+}
+
+private fun shareData(context: Context, message: String){
+    val shareIntent = Intent(Intent.ACTION_SEND).apply {
+        type ="text/plain"
+        putExtra(Intent.EXTRA_TEXT, message)
+    }
+    if(shareIntent.resolveActivity(context.packageManager) != null){
+        context.startActivity(shareIntent)
     }
 }
 

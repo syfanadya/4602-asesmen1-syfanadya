@@ -22,4 +22,7 @@
         bayi yaitu gizi kurang, gizi baik dan gizi lebih\n\nAplikasi ini dibuat untuk asesmen
         1 kelas Mobpro 1.\n\nCopyright © 2024 Syfanadya Wening Adi\nAll rights reserved</string>
     <string name="kembali">Kembali</string>
+    <string name="bagikan">Bagikan</string>
+    <string name="bagikan_template">Nama Bayi: %1$s\nJenis Kelamin: %2$s\nUsia Bayi: %3$s
+        \nBerat Badan: %4$s kg\n\nKATEGORI: %5$s</string>
 </resources>
